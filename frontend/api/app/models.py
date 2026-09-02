@@ -1,4 +1,4 @@
-from sqlalchemy import (
+﻿from sqlalchemy import (
     Column,
     Integer,
     String,
@@ -9,7 +9,7 @@ from sqlalchemy import (
     func,
 )
 from sqlalchemy.orm import relationship
-from .database import Base
+from database import Base
 
 
 class Patient(Base):

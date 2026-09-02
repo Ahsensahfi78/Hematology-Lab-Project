@@ -1,4 +1,4 @@
-import os, secrets
+﻿import os, secrets
 from datetime import datetime, timedelta
 from typing import List, Optional
 
@@ -6,7 +6,7 @@ from fastapi import FastAPI, Depends, HTTPException, Header
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-from .database import Base, engine
+from database import Base, engine
 from .routers import patients, reports
 
 Base.metadata.create_all(bind=engine)

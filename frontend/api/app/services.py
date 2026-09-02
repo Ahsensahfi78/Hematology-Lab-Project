@@ -1,13 +1,13 @@
-from datetime import datetime
+﻿from datetime import datetime
 
-from . import references
+import references
 
 
 def generate_patient_id(session) -> str:
     """Generate a unique, human-friendly patient ID like PT-000123."""
     from sqlalchemy import func
 
-    from .models import Patient
+    from models import Patient
 
     count = session.query(func.count(Patient.id)).scalar() or 0
     base = int(count) + 1
@@ -24,7 +24,7 @@ def generate_sample_id(session) -> str:
     from sqlalchemy import func
     from sqlalchemy.sql import extract
 
-    from .models import Report
+    from models import Report
 
     now = datetime.now()
     day_prefix = now.strftime("%Y%m%d")
