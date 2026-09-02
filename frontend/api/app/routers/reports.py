@@ -210,21 +210,24 @@ def _pdf_escape(text):
 
 @router.get("/{report_id}/pdf")
 def download_pdf(report_id: int, db: Session = Depends(get_db)):
+    try:
+        from reportlab.lib.pagesizes import A4
+        from reportlab.lib.units import mm
+        from reportlab.lib import colors
+        from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+        from reportlab.platypus import (
+            SimpleDocTemplate,
+            Paragraph,
+            Spacer,
+            Table,
+            TableStyle,
+        )
+    except ImportError:
+        raise HTTPException(status_code=501, detail="PDF generation not available on this deployment")
+
     report = _load_report(db, report_id)
     patient = report.patient
     results = sorted(report.results, key=lambda r: _pdf_param_index(r.parameter_name))
-
-    from reportlab.lib.pagesizes import A4
-    from reportlab.lib.units import mm
-    from reportlab.lib import colors
-    from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-    from reportlab.platypus import (
-        SimpleDocTemplate,
-        Paragraph,
-        Spacer,
-        Table,
-        TableStyle,
-    )
 
     buf = io.BytesIO()
     doc = SimpleDocTemplate(
