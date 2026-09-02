@@ -1,0 +1,11 @@
+﻿frontend/api/app/
+frontend/api/protocol/
+frontend/api/routers/
+frontend/api/database.py
+frontend/api/models.py
+frontend/api/schemas.py
+frontend/api/services.py
+frontend/api/references.py
+frontend/api/__init__.py
+frontend/node_modules/
+frontend/.next/
