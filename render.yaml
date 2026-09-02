@@ -11,16 +11,14 @@ services:
         value: "3.11"
       - key: CORS_ORIGINS
         sync: false                # set after frontend deploy URL known
-      - key: DATABASE_URL
-        value: "sqlite:///var/data/labreports.db"
 
   # ── Frontend (Next.js) ───────────────────────────────────────────────
   - type: web
     name: hematology-frontend
     runtime: node
     plan: free
-    buildCommand: npm install && npm run build
-    startCommand: npm start
+    buildCommand: cd frontend && npm install && npm run build
+    startCommand: cd frontend && npm start
     envVars:
       - key: NODE_VERSION
         value: "20"
