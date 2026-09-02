@@ -1,0 +1,15 @@
+node_modules/
+.next/
+__pycache__/
+*.pyc
+*.db
+*.log
+.env
+.env.local
+frontend/out/
+backend/labreports.db
+backend/*.log
+backend/listener/*.log
+Hematology-Lab-Project/
+.venv/
+*.pyc

@@ -1,0 +1,10 @@
+{
+  "host": "127.0.0.1",
+  "port": 5000,
+  "api_base": "http://127.0.0.1:8000",
+  "api_username": "technician",
+  "api_password": "lab123",
+  "protocol": "mllp",
+  "panel": "LMG",
+  "log_file": ""
+}

@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground: #0f172a;
+  --background: #f1f5f9;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white;
+  }
+  .print-only {
+    display: block !important;
+  }
+}
+
+/* Haematology report print layout (A4).
+   Side-by-side: parameter table left, histograms right.
+   Canvas-derived graphs are swapped to <img> snaps before printing (see
+   HaematologyReport.tsx preparePrint) so they render reliably in the output. */
+@page {
+  size: A4;
+  margin: 10mm;
+}
+
+@media print {
+  .report-sheet {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    font-size: 11px;
+  }
+  .report-sheet input,
+  .report-sheet textarea {
+    border: none !important;
+    background: transparent !important;
+  }
+  /* Force the graph column to stay on the right */
+  .report-sheet .grid {
+    grid-template-columns: 1.5fr 1fr !important;
+    align-items: start !important;
+  }
+}

@@ -1,0 +1,30 @@
+services:
+  # ── Backend (FastAPI + SQLite) ────────────────────────────────────────
+  - type: web
+    name: hematology-backend
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
+      - key: CORS_ORIGINS
+        sync: false                # set after frontend deploy URL known
+      - key: DATABASE_URL
+        value: "sqlite:///var/data/labreports.db"
+
+  # ── Frontend (Next.js) ───────────────────────────────────────────────
+  - type: web
+    name: hematology-frontend
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: PORT
+        value: "3000"
+      - key: NEXT_PUBLIC_API_URL
+        sync: false                # set to backend's .onrender.com URL
