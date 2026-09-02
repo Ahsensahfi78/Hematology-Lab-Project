@@ -13,3 +13,5 @@ backend/listener/*.log
 Hematology-Lab-Project/
 .venv/
 *.pyc
+frontend/_node.exe
+frontend/node.exe
