@@ -1,6 +1,7 @@
 import type { Patient, PatientCreate, Report, ReportCreate } from "./types";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
+// On Vercel, API runs as serverless function at /api/*; locally, separate server.
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || (typeof window !== "undefined" ? "/api" : "http://127.0.0.1:8000");
 const TOKEN_KEY = "lab_token";
 
 export function getToken(): string | null {
