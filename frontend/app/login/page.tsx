@@ -72,9 +72,6 @@ export default function LoginPage() {
             {loading ? "Signing in…" : "Sign In"}
           </button>
         </form>
-        <p className="mt-4 text-center text-xs text-slate-400">
-          Demo credentials: technician / lab123
-        </p>
       </div>
     </div>
   );
